@@ -46,11 +46,11 @@ def make_plot(weather_data, city_name):
     temp_dates = weather_data["hourly"]["time"]
     temp_values = weather_data["hourly"]["temperature_2m"]
 
-    table = pd.DataFrame(list(zip(temp_dates, temp_values)), columns=["date", "temp"])
-    table["date"] = pd.to_datetime(table["date"])
+    df = pd.DataFrame(list(zip(temp_dates, temp_values)), columns=["date", "temp"])
+    df["date"] = pd.to_datetime(df["date"])
 
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
-    plt.plot(table['date'], table['temp'])
+    plt.plot(df['date'], df['temp'])
     plt.xlabel("Даты")
     plt.ylabel("Температуры (°C)")
     plt.title(f"График температуры в {city_name}")
